@@ -1,6 +1,8 @@
 <html>
 <head>
 
+    <title>andrOS</title>
+    
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -28,13 +30,71 @@
     </script-->
     
     <script>
+        var appList = new Array(5);
+        
         $(function() {
-            $( ".draggable" ).draggable({handle: ".titleBar"});
+            $( ".draggable" ).draggable({
+                handle: ".titleBar",
+                scroll: false,
+                snap: true,
+                snapMode: "outer",
+                stack: "#example",
+                containment: "body"
+            });
             
         });
+        
+        $(document).ready(function(){
+            $(".toggleApps").click(function(){
+                $("#apps").toggle("fast", "linear");
+            });
+        });
+        
+        function startTime()
+        {
+            var today = new Date();
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+            m = checkTime(m);
+            s = checkTime(s);
+            document.getElementById('clock').innerHTML =
+            h + ":" + m + ":" + s;
+            var t = setTimeout(startTime, 500);
+        }
+        function checkTime(i)
+        {
+            if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+            return i;
+        }
+        
+        function www()
+        {
+            var x = document.getElementById("www").value;
+            document.getElementById("browserFrame").src = x;
+        }
+        
+        function makeactive(window)
+        {
+            
+            document.getElementById(window).className += " active";
+            /*for (i = 0; i < appList.length; i++) {
+            //    document.getElementById(i).className = document.getElementById(i).className.replace( /(?:^|\s)active(?!\S)/g , '' );
+            //}*/
+        }
+        
+        function launchApp(app)
+        {
+            document.getElementById(app).style.display = "none";
+            //for (i = 0; i < appList.length; i++) {
+            //    document.getElementById(i).className = document.getElementById(i).className.replace( /(?:^|\s)active(?!\S)/g , '' );
+            //}
+            appList.push(app);
+            document.getElementById(window).className += " active";
+        }
     </script>
     
-    <script>
+    <!--script>
         $(document).ready(function(){
             $(".toggleApps").click(function(){
                 $("#apps").toggle("fast", "linear");
@@ -67,7 +127,7 @@
             var x = document.getElementById("www").value;
             document.getElementById("browser").src = x;
         }
-    </script>
+    </script-->
 
 </head>
 <body onload="startTime()">
@@ -88,126 +148,127 @@
         </div>
     </nav>
     
-    <div class="draggable">
-        <div class="titleBar"><span class="close"></span><span class="max"></span><span class="min"></span><span class="titleText">Window 1</span></div>
-        <div class="window">
-            <input type="text" id="www" value="www."><button onclick="www()">GO!</button><br />
-            <iframe src="http://www.bing.com/" id="browser"></iframe>
-        </div>
-    </div>
-    
-    <div class="draggable">
-        <div class="titleBar"><span class="close"></span><span class="max"></span><span class="min"></span><span class="titleText">Window 2</span></div>
-        <div class="window">
-            <h3>Drag Me!</h3>
-            
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque condimentum, nibh quis consequat imperdiet, augue est imperdiet felis, a malesuada nisl purus at arcu. Donec laoreet lacinia enim, sed ornare nisl tristique sit amet. Nulla finibus felis lectus, sit amet sollicitudin felis facilisis id. Pellentesque non enim nulla. Fusce faucibus neque erat, eleifend ultrices augue sollicitudin quis. Aliquam pellentesque, risus nec pulvinar faucibus, eros purus cursus mi, et congue lectus tellus a sapien. Donec ultricies ac orci id vehicula. Maecenas purus mi, egestas vitae nibh in, maximus tempus nunc. Cras iaculis lectus mollis ex porta fringilla. Cras ut turpis sit amet tellus dignissim consequat. Aliquam lacus purus, dictum sed urna quis, porta sollicitudin ipsum. Vivamus tristique posuere auctor. In et pellentesque felis.
-            </p>
-            <p>
-Aenean nulla sem, blandit at nunc ac, volutpat semper mauris. Sed at iaculis eros. Donec eget sollicitudin purus. Quisque quis massa quis felis aliquet consequat. Sed eget turpis sed tellus efficitur condimentum. Quisque ullamcorper enim vitae efficitur porttitor. Integer eget aliquam ante. Quisque id nibh quis quam accumsan aliquet id id justo. Sed viverra volutpat tortor a accumsan. Cras aliquet venenatis nisi, nec eleifend elit scelerisque eget. Sed eu imperdiet est, lacinia euismod arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam cursus ipsum et dictum euismod.
-            </p>
-            <p>
-Duis accumsan, urna vitae lobortis pellentesque, lorem eros ornare nisi, id porttitor massa eros ac tortor. Proin suscipit interdum nulla, vel sollicitudin tellus hendrerit in. Nunc consequat, libero vel mollis tempus, diam erat aliquet augue, rutrum congue arcu justo a justo. Proin purus orci, condimentum nec elit in, posuere egestas mi. Etiam vehicula urna pulvinar viverra fringilla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas malesuada vitae tellus eget dignissim. In vulputate feugiat ligula quis viverra.
-            </p>
-            <p>
-Cras quis vulputate odio. Proin metus enim, lacinia pulvinar mauris sed, cursus semper dolor. Cras vitae varius erat, vitae convallis diam. Duis laoreet, nisi non egestas commodo, massa dolor dignissim est, ac pulvinar mauris orci quis lectus. In eu feugiat odio. Nulla suscipit leo a mi volutpat, sit amet lacinia est tempor. Duis magna velit, porttitor in orci ut, pellentesque venenatis nisi. Nam quis leo bibendum, luctus augue sed, vulputate neque. Aliquam erat volutpat. Donec vulputate ornare justo, congue condimentum enim sagittis lobortis. Nunc hendrerit varius turpis, in vulputate felis venenatis vitae. Vivamus porta dolor at mauris consectetur, id suscipit sem hendrerit.
-            </p>
-            <p>
-Pellentesque iaculis posuere faucibus. Duis non tempus velit, non bibendum purus. Nullam sit amet magna massa. Phasellus aliquam quam at rutrum malesuada. Maecenas gravida vulputate tempor. Vivamus vulputate et nisi id bibendum. Nulla in diam convallis, finibus ante ac, pretium neque. 
-            </p>
-        </div>
-    </div>
-    
-    <div class="container" id="apps" style="display: none;">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="jumbotron">
-                    <h3>Apps</h3>
-                    <table>
-                        <thead>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
-                                <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
-                                <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
-                                <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
-                                <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
-                            </tr>
-                            <tr>
-                                <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
-                                <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
-                                <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
-                                <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
-                                <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
-                            </tr>
-                            <tr>
-                                <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
-                                <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
-                                <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
-                                <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
-                                <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
-                            </tr>
-                            <tr>
-                                <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
-                                <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
-                                <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
-                                <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
-                                <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
-                            </tr>
-                            <tr>
-                                <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
-                                <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
-                                <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
-                                <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
-                                <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Trigger the modal with a button >
-    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button-->
-
-    <!-- Modal -->
-    <div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog modal-lg">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <!--button type="button" class="close" data-dismiss="modal">&times;</button-->
-                    <h4 class="modal-title">Log in</h4>
-                </div>
-                <div class="modal-body">
-                    <form role="form">
-                        <div class="form-group">
-                            <label for="email">Email address:</label>
-                            <input type="email" class="form-control" id="email">
-                        </div>
-                        <div class="form-group">
-                            <label for="pwd">Password:</label>
-                            <input type="password" class="form-control" id="pwd">
-                        </div>
-                        <div class="checkbox">
-                            <label><input type="checkbox"> Remember me</label>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <div class="btn-group">
-                        <button type="submit" class="btn btn-default">Log in</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Guest</button>
+    <div class="notNav">    
+        <div class="container" id="apps" style="display: none;">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="jumbotron">
+                        <h3>Apps</h3>
+                        <table>
+                            <thead>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="glyphicon glyphicon-apple toggleApps" onclick="launchApp(example)"></span></td>
+                                    <td><span class="glyphicon glyphicon-globe toggleApps" onclick="launchApp(browser)"></span></td>
+                                    <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
+                                    <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
+                                    <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
+                                    <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
+                                    <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
+                                    <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
+                                    <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
+                                    <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
+                                    <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
+                                    <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
+                                    <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
+                                    <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
+                                    <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
+                                    <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
+                                    <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
+                                    <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
+                                    <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
+                                    <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
+                                    <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
+        </div>
 
+        <div class="draggable" id="browser" onclick="makeactive(browser)">
+            <div class="titleBar" id="1"><span class="close"></span><span class="max"></span><span class="min"></span><span class="titleText">Window 1</span></div>
+            <div class="window">
+                <input type="text" id="www" value="www."><button onclick="www()">GO!</button><br />
+                <iframe src="http://www.bing.com/" id="browserFrame"></iframe>
+            </div>
+        </div>
+
+        <div class="draggable" id="example" onclick="makeactive(example)">
+            <div class="titleBar" id="2"><span class="close"></span><span class="max"></span><span class="min"></span><span class="titleText">Window 2</span></div>
+            <div class="window">
+                <h3>Drag Me!</h3>
+
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque condimentum, nibh quis consequat imperdiet, augue est imperdiet felis, a malesuada nisl purus at arcu. Donec laoreet lacinia enim, sed ornare nisl tristique sit amet. Nulla finibus felis lectus, sit amet sollicitudin felis facilisis id. Pellentesque non enim nulla. Fusce faucibus neque erat, eleifend ultrices augue sollicitudin quis. Aliquam pellentesque, risus nec pulvinar faucibus, eros purus cursus mi, et congue lectus tellus a sapien. Donec ultricies ac orci id vehicula. Maecenas purus mi, egestas vitae nibh in, maximus tempus nunc. Cras iaculis lectus mollis ex porta fringilla. Cras ut turpis sit amet tellus dignissim consequat. Aliquam lacus purus, dictum sed urna quis, porta sollicitudin ipsum. Vivamus tristique posuere auctor. In et pellentesque felis.
+                </p>
+                <p>
+    Aenean nulla sem, blandit at nunc ac, volutpat semper mauris. Sed at iaculis eros. Donec eget sollicitudin purus. Quisque quis massa quis felis aliquet consequat. Sed eget turpis sed tellus efficitur condimentum. Quisque ullamcorper enim vitae efficitur porttitor. Integer eget aliquam ante. Quisque id nibh quis quam accumsan aliquet id id justo. Sed viverra volutpat tortor a accumsan. Cras aliquet venenatis nisi, nec eleifend elit scelerisque eget. Sed eu imperdiet est, lacinia euismod arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam cursus ipsum et dictum euismod.
+                </p>
+                <p>
+    Duis accumsan, urna vitae lobortis pellentesque, lorem eros ornare nisi, id porttitor massa eros ac tortor. Proin suscipit interdum nulla, vel sollicitudin tellus hendrerit in. Nunc consequat, libero vel mollis tempus, diam erat aliquet augue, rutrum congue arcu justo a justo. Proin purus orci, condimentum nec elit in, posuere egestas mi. Etiam vehicula urna pulvinar viverra fringilla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas malesuada vitae tellus eget dignissim. In vulputate feugiat ligula quis viverra.
+                </p>
+                <p>
+    Cras quis vulputate odio. Proin metus enim, lacinia pulvinar mauris sed, cursus semper dolor. Cras vitae varius erat, vitae convallis diam. Duis laoreet, nisi non egestas commodo, massa dolor dignissim est, ac pulvinar mauris orci quis lectus. In eu feugiat odio. Nulla suscipit leo a mi volutpat, sit amet lacinia est tempor. Duis magna velit, porttitor in orci ut, pellentesque venenatis nisi. Nam quis leo bibendum, luctus augue sed, vulputate neque. Aliquam erat volutpat. Donec vulputate ornare justo, congue condimentum enim sagittis lobortis. Nunc hendrerit varius turpis, in vulputate felis venenatis vitae. Vivamus porta dolor at mauris consectetur, id suscipit sem hendrerit.
+                </p>
+                <p>
+    Pellentesque iaculis posuere faucibus. Duis non tempus velit, non bibendum purus. Nullam sit amet magna massa. Phasellus aliquam quam at rutrum malesuada. Maecenas gravida vulputate tempor. Vivamus vulputate et nisi id bibendum. Nulla in diam convallis, finibus ante ac, pretium neque. 
+                </p>
+            </div>
+        </div>
+
+        <!-- Trigger the modal with a button >
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button-->
+
+        <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-lg">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <!--button type="button" class="close" data-dismiss="modal">&times;</button-->
+                        <h4 class="modal-title">Log in</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <label for="email">Email address:</label>
+                                <input type="email" class="form-control" id="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="pwd">Password:</label>
+                                <input type="password" class="form-control" id="pwd">
+                            </div>
+                            <div class="checkbox">
+                                <label><input type="checkbox"> Remember me</label>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="btn-group">
+                            <button type="submit" class="btn btn-default">Log in</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Guest</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
-    
 </body>
 </html>
