@@ -113,8 +113,12 @@ td .glyphicon:hover
     
     margin: 15px;
     padding: 0px;
-    resize: both;
-    overflow: auto;
+}
+
+.window
+{
+    //resize: both;
+    //overflow: auto;
     
     min-height: 150px;
     min-width: 250px;
@@ -127,8 +131,8 @@ td .glyphicon:hover
     
     background-color: #ddd;
     border-style: solid;
-    border-color: #222;
-    border-width: 5px 3px 7px 3px;
+    border-color: #444;
+    border-width: 20px 3px 7px 3px;
     border-radius: 5px;
     
     box-shadow: 0px 0px 50px 25px rgba(0,0,0,.4);
@@ -138,8 +142,10 @@ td .glyphicon:hover
 {
     width: 100%;
     height: 20px;
-    margin: 0px 0px 0px 0px;
-    background-color: #222;
+    margin: -20px 0px 0px 0px;
+    //background-color: #222;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 
 }
 
@@ -185,12 +191,13 @@ td .glyphicon:hover
     color: #ddd;
 }
 
-.window
+.windowContent
 {
     //width: 100%;
     //height: 80%;
     padding: 15px;
-    //overflow: auto;
+    resize: both;
+    overflow: auto;
     /*background-color: #ddd;
     border-style: solid;
     border-color: #222;
@@ -199,7 +206,7 @@ td .glyphicon:hover
     border-bottom-right-radius: 5px;*/
 }
 
-.window h3
+.windowContent h3
 {
     padding: 0px;
     padding-bottom: 5px;
@@ -217,9 +224,49 @@ td .glyphicon:hover
 
 .active
 {
-    border-color: aqua;
-    background-color: red;
+    border-color: #222;
     z-index: 99;
     
     box-shadow: 0px 0px 15px 10px rgba(0,0,0,.6);
+}
+
+.maximize
+{
+    background-color: red;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.dock
+{
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    color: #ddd;
+    cursor: pointer;
+    text-align: center;
+}
+
+.dockCenter
+{
+    margin-left: -46%;
+}
+
+.dock .glyphicon
+{
+    font-size: 36px;
+    padding: 5px;
+    margin: 0px;
+    
+    transition: all .2s linear 0s;
+}
+
+.dock .glyphicon:hover
+{
+    font-size: 64px;
+    
+    transition: all .1s linear 0s;
 }

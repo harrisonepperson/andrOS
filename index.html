@@ -74,15 +74,6 @@
             document.getElementById("browserFrame").src = x;
         }
         
-        function makeactive(window)
-        {
-            
-            document.getElementById(window).className += " active";
-            /*for (i = 0; i < appList.length; i++) {
-            //    document.getElementById(i).className = document.getElementById(i).className.replace( /(?:^|\s)active(?!\S)/g , '' );
-            //}*/
-        }
-        
         function launchApp(app)
         {
             document.getElementById(app).style.display = "none";
@@ -90,7 +81,37 @@
             //    document.getElementById(i).className = document.getElementById(i).className.replace( /(?:^|\s)active(?!\S)/g , '' );
             //}
             appList.push(app);
-            document.getElementById(window).className += " active";
+            document.getElementById(app).className += " active";
+        }
+        
+        function makeActive(app)
+        {
+            document.getElementById(app).className += " active";
+            /*for (i = 0; i < appList.length; i++) {
+            //    document.getElementById(i).className = document.getElementById(i).className.replace( /(?:^|\s)active(?!\S)/g , '' );
+            //}*/
+        }
+        
+        function closeApp(app)
+        {
+            document.getElementById(app).style.display = "none";
+        }
+        
+        function maxApp(app, condition)
+        {
+            if(condition)
+            {
+                document.getElementById(app).className += " maximize";
+            }
+            else
+            {
+                //document.getElementById(i).className = document.getElementById(i).className.replace( /(?:^|\s)active(?!\S)/g , '' );
+            }
+        }
+        
+        function minApp(app, condition)
+        {
+            document.getElementById(app).style.display = "none";
         }
     </script>
     
@@ -138,7 +159,7 @@
                 <a class="navbar-brand" href="#">WebSiteName</a>
             </div-->
             <ul class="nav navbar-nav">
-                <li class="active toggleApps"><a href="#" id="toggleApps"><span class="glyphicon glyphicon-th"></span></a></li>
+                <li class="toggleApps"><a href="#" id="toggleApps"><span class="glyphicon glyphicon-th"></span></a></li>
             </ul>
             
             <ul class="nav navbar-nav navbar-right">
@@ -200,34 +221,58 @@
             </div>
         </div>
 
-        <div class="draggable" id="browser" onclick="makeactive(browser)">
-            <div class="titleBar" id="1"><span class="close"></span><span class="max"></span><span class="min"></span><span class="titleText">Window 1</span></div>
-            <div class="window">
-                <input type="text" id="www" value="www."><button onclick="www()">GO!</button><br />
-                <iframe src="http://www.bing.com/" id="browserFrame"></iframe>
+        <div class="draggable" style="display:none;">
+            <div class="window" id="browser" onclick="makeActive(browser)">
+                <div class="titleBar">
+                    <span class="close" onclick="closeApp(browser)"></span>
+                    <span class="max"></span>
+                    <span class="min"></span>
+                    <span class="titleText">Window 1</span>
+                </div>
+                <div class="windowContent">
+                    <input type="text" id="www" value="www."><button onclick="www()">GO!</button><br />
+                    <iframe src="http://www.bing.com/" id="browserFrame"></iframe>
+                </div>
             </div>
         </div>
 
-        <div class="draggable" id="example" onclick="makeactive(example)">
-            <div class="titleBar" id="2"><span class="close"></span><span class="max"></span><span class="min"></span><span class="titleText">Window 2</span></div>
-            <div class="window">
-                <h3>Drag Me!</h3>
+        <div class="draggable" onclick="makeActive('example');">
+            <div class="window" id="example">
+                <div class="titleBar">
+                    <span class="close" onclick="closeApp('example')"></span>
+                    <span class="max" onclick="maxApp('example', 0)"></span>
+                    <span class="min" onclick="minApp('example', 0)"></span>
+                    <span class="titleText">Window 2</span>
+                </div>
+                <div class="windowContent">
+                    <h3>Drag Me!</h3>
 
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque condimentum, nibh quis consequat imperdiet, augue est imperdiet felis, a malesuada nisl purus at arcu. Donec laoreet lacinia enim, sed ornare nisl tristique sit amet. Nulla finibus felis lectus, sit amet sollicitudin felis facilisis id. Pellentesque non enim nulla. Fusce faucibus neque erat, eleifend ultrices augue sollicitudin quis. Aliquam pellentesque, risus nec pulvinar faucibus, eros purus cursus mi, et congue lectus tellus a sapien. Donec ultricies ac orci id vehicula. Maecenas purus mi, egestas vitae nibh in, maximus tempus nunc. Cras iaculis lectus mollis ex porta fringilla. Cras ut turpis sit amet tellus dignissim consequat. Aliquam lacus purus, dictum sed urna quis, porta sollicitudin ipsum. Vivamus tristique posuere auctor. In et pellentesque felis.
-                </p>
-                <p>
-    Aenean nulla sem, blandit at nunc ac, volutpat semper mauris. Sed at iaculis eros. Donec eget sollicitudin purus. Quisque quis massa quis felis aliquet consequat. Sed eget turpis sed tellus efficitur condimentum. Quisque ullamcorper enim vitae efficitur porttitor. Integer eget aliquam ante. Quisque id nibh quis quam accumsan aliquet id id justo. Sed viverra volutpat tortor a accumsan. Cras aliquet venenatis nisi, nec eleifend elit scelerisque eget. Sed eu imperdiet est, lacinia euismod arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam cursus ipsum et dictum euismod.
-                </p>
-                <p>
-    Duis accumsan, urna vitae lobortis pellentesque, lorem eros ornare nisi, id porttitor massa eros ac tortor. Proin suscipit interdum nulla, vel sollicitudin tellus hendrerit in. Nunc consequat, libero vel mollis tempus, diam erat aliquet augue, rutrum congue arcu justo a justo. Proin purus orci, condimentum nec elit in, posuere egestas mi. Etiam vehicula urna pulvinar viverra fringilla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas malesuada vitae tellus eget dignissim. In vulputate feugiat ligula quis viverra.
-                </p>
-                <p>
-    Cras quis vulputate odio. Proin metus enim, lacinia pulvinar mauris sed, cursus semper dolor. Cras vitae varius erat, vitae convallis diam. Duis laoreet, nisi non egestas commodo, massa dolor dignissim est, ac pulvinar mauris orci quis lectus. In eu feugiat odio. Nulla suscipit leo a mi volutpat, sit amet lacinia est tempor. Duis magna velit, porttitor in orci ut, pellentesque venenatis nisi. Nam quis leo bibendum, luctus augue sed, vulputate neque. Aliquam erat volutpat. Donec vulputate ornare justo, congue condimentum enim sagittis lobortis. Nunc hendrerit varius turpis, in vulputate felis venenatis vitae. Vivamus porta dolor at mauris consectetur, id suscipit sem hendrerit.
-                </p>
-                <p>
-    Pellentesque iaculis posuere faucibus. Duis non tempus velit, non bibendum purus. Nullam sit amet magna massa. Phasellus aliquam quam at rutrum malesuada. Maecenas gravida vulputate tempor. Vivamus vulputate et nisi id bibendum. Nulla in diam convallis, finibus ante ac, pretium neque. 
-                </p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque condimentum, nibh quis consequat imperdiet, augue est imperdiet felis, a malesuada nisl purus at arcu. Donec laoreet lacinia enim, sed ornare nisl tristique sit amet. Nulla finibus felis lectus, sit amet sollicitudin felis facilisis id. Pellentesque non enim nulla. Fusce faucibus neque erat, eleifend ultrices augue sollicitudin quis. Aliquam pellentesque, risus nec pulvinar faucibus, eros purus cursus mi, et congue lectus tellus a sapien. Donec ultricies ac orci id vehicula. Maecenas purus mi, egestas vitae nibh in, maximus tempus nunc. Cras iaculis lectus mollis ex porta fringilla. Cras ut turpis sit amet tellus dignissim consequat. Aliquam lacus purus, dictum sed urna quis, porta sollicitudin ipsum. Vivamus tristique posuere auctor. In et pellentesque felis.
+                    </p>
+                    <p>
+        Aenean nulla sem, blandit at nunc ac, volutpat semper mauris. Sed at iaculis eros. Donec eget sollicitudin purus. Quisque quis massa quis felis aliquet consequat. Sed eget turpis sed tellus efficitur condimentum. Quisque ullamcorper enim vitae efficitur porttitor. Integer eget aliquam ante. Quisque id nibh quis quam accumsan aliquet id id justo. Sed viverra volutpat tortor a accumsan. Cras aliquet venenatis nisi, nec eleifend elit scelerisque eget. Sed eu imperdiet est, lacinia euismod arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam cursus ipsum et dictum euismod.
+                    </p>
+                    <p>
+        Duis accumsan, urna vitae lobortis pellentesque, lorem eros ornare nisi, id porttitor massa eros ac tortor. Proin suscipit interdum nulla, vel sollicitudin tellus hendrerit in. Nunc consequat, libero vel mollis tempus, diam erat aliquet augue, rutrum congue arcu justo a justo. Proin purus orci, condimentum nec elit in, posuere egestas mi. Etiam vehicula urna pulvinar viverra fringilla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas malesuada vitae tellus eget dignissim. In vulputate feugiat ligula quis viverra.
+                    </p>
+                    <p>
+        Cras quis vulputate odio. Proin metus enim, lacinia pulvinar mauris sed, cursus semper dolor. Cras vitae varius erat, vitae convallis diam. Duis laoreet, nisi non egestas commodo, massa dolor dignissim est, ac pulvinar mauris orci quis lectus. In eu feugiat odio. Nulla suscipit leo a mi volutpat, sit amet lacinia est tempor. Duis magna velit, porttitor in orci ut, pellentesque venenatis nisi. Nam quis leo bibendum, luctus augue sed, vulputate neque. Aliquam erat volutpat. Donec vulputate ornare justo, congue condimentum enim sagittis lobortis. Nunc hendrerit varius turpis, in vulputate felis venenatis vitae. Vivamus porta dolor at mauris consectetur, id suscipit sem hendrerit.
+                    </p>
+                    <p>
+        Pellentesque iaculis posuere faucibus. Duis non tempus velit, non bibendum purus. Nullam sit amet magna massa. Phasellus aliquam quam at rutrum malesuada. Maecenas gravida vulputate tempor. Vivamus vulputate et nisi id bibendum. Nulla in diam convallis, finibus ante ac, pretium neque. 
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="dock">
+            <div class="dockCenter">
+                <span class="glyphicon glyphicon-globe toggleApps" onclick="launchApp(browser)"></span>
+                <span class="glyphicon glyphicon-globe toggleApps" onclick="launchApp(browser)"></span>
+                <span class="glyphicon glyphicon-globe toggleApps" onclick="launchApp(browser)"></span>
+                <span class="glyphicon glyphicon-globe toggleApps" onclick="launchApp(browser)"></span>
+                <span class="glyphicon glyphicon-globe toggleApps" onclick="launchApp(browser)"></span>
             </div>
         </div>
 
