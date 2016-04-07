@@ -1,0 +1,178 @@
+body
+{
+    background-image: url(images/background.jpg);
+    overflow: hidden;
+}
+
+.navbar
+{
+    border-radius: 0px;
+    padding: 0px;
+    min-height: 30px;
+    height: 30px;
+}
+
+.navbar-inverse
+{
+    background-color: #222;
+    border-style: solid;
+    border-color: #000;
+    border-width: 0px;
+    padding: 0px;
+}
+
+.navbar-inverse .navbar-nav > li > a
+{
+    color: #ddd;
+    padding: 5px 15px;
+}
+
+ul li a .glyphicon
+{
+    font-size: 14px;
+    padding: 3px 15px;
+}
+
+#clock
+{
+    color: #ddd;
+    font-weight: bold;
+    text-align: center;
+    padding: 5px;
+}
+
+/*.navbar-right
+{
+    display: inline-block;
+    float: right;
+}*/
+
+.jumbotron
+{
+    position: fixed;
+    top: 50px;
+    left: 50px;
+    background: rgba(34,34,34,.50);
+    color: #ddd;
+    border-radius: 0px;
+    text-align: center;
+    z-index: 99;
+}
+
+table
+{
+    margin: 15px auto;
+    color: #ddd;
+}
+
+tr
+{
+    border-style: solid;
+    border-color: #333;
+    border-width: 0px 0px 1px 0px;
+}
+
+td
+{
+    padding: 15px;
+    border-style: solid;
+    border-color: #333;
+    border-width: 0px 1px 0px 0px;
+}
+
+tr:last-child, td:last-child
+{
+    border-style: solid;
+    border-color: #333;
+    border-width: 0px;
+}
+
+td .glyphicon
+{
+    font-size: 56px;
+    padding: 15px;
+    border-radius: 5px;
+    
+    transition: all .2s linear 0s;
+}
+
+td .glyphicon:hover
+{
+    background-color: #444;
+    
+    transition: all .1s linear 0s;
+}
+
+.titleBar
+{
+    width: 250px;
+    height: 20px;
+    background-color: #222;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.close, .max, .min, .restore
+{
+    margin: 5px;
+    height: 10px;
+    width: 10px;
+    border-radius: 100%;
+    float: left;
+    opacity: .7;
+    
+    transition: all .1s linear 0s;
+}
+
+.close:hover, .max:hover, .min:hover, .restore:hover
+{
+    opacity: 1;
+    cursor: pointer;
+    
+    transition: all .0s linear 0s;
+}
+
+.close
+{
+    margin-left: 5px;
+    background-color: #f00;
+}
+
+.max, .restore
+{
+    background-color: #ff0;
+}
+
+.min
+{
+    background-color: #0f0;
+}
+
+.draggable
+{
+    margin: 15px;
+    padding: 0px;
+    overflow: auto;
+    resize: both;
+    max-width: 300px;
+    max-height: 460px;
+}
+
+.titleText
+{
+    margin-left: 15px;
+    color: #ddd;
+}
+
+.window
+{
+    width: 250px;
+    height: 150px;
+    padding: 1px 15px;
+    background-color: #ddd;
+    border-style: solid;
+    border-color: #222;
+    border-width: 0px 3px 7px 3px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
