@@ -44,11 +44,31 @@
             
         });
         
-        $(document).ready(function(){
-            $(".toggleApps").click(function(){
-                $("#apps").toggle("fast", "linear");
-            });
-        });
+        $(document).ready(
+            function()
+            {
+                $(".toggleApps").click(
+                    function()
+                    {
+                        $("#apps").toggle("fast", "linear");
+                    }
+                );
+                
+                $(".toggleBrowser").click(
+                    function()
+                    {
+                        $("#browserFrame").toggle("fast", "linear");
+                    }
+                );
+                
+                $(".toggleExample").click(
+                    function()
+                    {
+                        $("#exampleFrame").toggle("fast", "linear");
+                    }
+                );
+            }
+        ); onclick="launchApp('example')"
         
         function startTime()
         {
@@ -71,12 +91,12 @@
         function www()
         {
             var x = document.getElementById("www").value;
-            document.getElementById("browserFrame").src = x;
+            document.getElementById("browserContent").src = x;
         }
         
         function launchApp(app)
         {
-            document.getElementById(app).style.display = "none";
+            document.getElementById(app).style.display = "show";
             //for (i = 0; i < appList.length; i++) {
             //    document.getElementById(i).className = document.getElementById(i).className.replace( /(?:^|\s)active(?!\S)/g , '' );
             //}
@@ -180,8 +200,8 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><span class="glyphicon glyphicon-apple toggleApps" onclick="launchApp(example)"></span></td>
-                                    <td><span class="glyphicon glyphicon-globe toggleApps" onclick="launchApp(browser)"></span></td>
+                                    <td><span class="glyphicon glyphicon-apple toggleApps toggleExample"></span></td>
+                                    <td><span class="glyphicon glyphicon-globe toggleApps toggleBrowser"></span></td>
                                     <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
                                     <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
                                     <td><span class="glyphicon glyphicon-heart toggleApps"></span></td>
@@ -221,22 +241,22 @@
             </div>
         </div>
 
-        <div class="draggable" style="display:none;">
-            <div class="window" id="browser" onclick="makeActive(browser)">
+        <div class="draggable" style="display:show;" id="browserFrame" onclick="makeActive('browser')">
+            <div class="window" id="browser">
                 <div class="titleBar">
-                    <span class="close" onclick="closeApp(browser)"></span>
+                    <span class="close" onclick="closeApp('browser')"></span>
                     <span class="max"></span>
                     <span class="min"></span>
-                    <span class="titleText">Window 1</span>
+                    <input type="text" id="www" value="http://www."><button onclick="www()" id="urlGo">GO!</button>
                 </div>
-                <div class="windowContent">
-                    <input type="text" id="www" value="www."><button onclick="www()">GO!</button><br />
-                    <iframe src="http://www.bing.com/" id="browserFrame"></iframe>
+                <div class="windowContent sizeLock noMarg noPad">
+                    <!--input type="text" id="www" value="www."><button onclick="www()">GO!</button><br /-->
+                    <iframe src="http://www.bing.com/" id="browserContent"></iframe>
                 </div>
             </div>
         </div>
 
-        <div class="draggable" onclick="makeActive('example');">
+        <div class="draggable" style="display:none;" id="exampleFrame" onclick="makeActive('example');">
             <div class="window" id="example">
                 <div class="titleBar">
                     <span class="close" onclick="closeApp('example')"></span>
@@ -268,11 +288,8 @@
         
         <div class="dock">
             <div class="dockCenter">
-                <span class="glyphicon glyphicon-globe toggleApps" onclick="launchApp(browser)"></span>
-                <span class="glyphicon glyphicon-globe toggleApps" onclick="launchApp(browser)"></span>
-                <span class="glyphicon glyphicon-globe toggleApps" onclick="launchApp(browser)"></span>
-                <span class="glyphicon glyphicon-globe toggleApps" onclick="launchApp(browser)"></span>
-                <span class="glyphicon glyphicon-globe toggleApps" onclick="launchApp(browser)"></span>
+                <span class="glyphicon glyphicon-globe toggleBrowser" ></span>
+                <span class="glyphicon glyphicon-globe toggleExample" ></span>
             </div>
         </div>
 
