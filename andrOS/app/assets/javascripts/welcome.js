@@ -1,5 +1,5 @@
 
-var appList = new Array(5);
+var appList = [];
 
 $(function() {
     $( ".draggable" ).draggable({
@@ -34,6 +34,12 @@ $(document).ready(function(){
             $("#exampleFrame").toggle("fast", "linear");
         }
     );
+    $("#calcFrame").hide();
+    $(".toggleCalculator").click(function()
+        {
+            $("#calcFrame").toggle("fast", "linear");
+        }
+    );
     (function ($) {
 
         $('#filter').keyup(function () {
@@ -45,11 +51,14 @@ $(document).ready(function(){
             }).show();
         })
     }($));
-
+    $('#calcFrame').click(function(){
+        launchApp('calc');
+        makeActive('calc');
+    });
     //Runs clock function when the DOM loads  
     $(startTime);
         
-}); onclick="launchApp('example')";
+});
 
 function startTime()
 {
@@ -81,20 +90,30 @@ function www()
 
 function launchApp(app)
 {
-    document.getElementById(app).style.display = "show";
-    //for (i = 0; i < appList.length; i++) {
-    //    document.getElementById(i).className = document.getElementById(i).className.replace( /(?:^|\s)active(?!\S)/g , '' );
-    //}
-    appList.push(app);
+    var test1 = String(app).trim();
+    //appList.push(test1);
+    document.getElementById(app).style.display = "show";  
     document.getElementById(app).className += " active";
+    //appList.push(app);
+    var found = $.inArray(test1.toString(), appList);
+    if (found >= 0) {
+        appList.splice(found, 1);
+    } else {
+        // Element was not found, add it.
+        appList.push(test1);
+    }
+ 
 }
 
 function makeActive(app)
 {
+    
     document.getElementById(app).className += " active";
-    /*for (i = 0; i < appList.length; i++) {
-    //    document.getElementById(i).className = document.getElementById(i).className.replace( /(?:^|\s)active(?!\S)/g , '' );
-    //}*/
+    for(var i = 0;i<appList.length;i++){
+        //document.getElementById().removeClass('active');
+        console.log(appList[i]);
+    }
+
 }
 
 function closeApp(app)

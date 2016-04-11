@@ -1,10 +1,10 @@
-<div class="draggable" style="display:show;" id="exampleFrame" onclick="makeActive('example');">
-    <div class="window" id="example">
+<div class="draggable" style="display:show;" id="calcFrame">
+    <div class="window" id="calc">
         <div class="titleBar">
-            <span class="close" onclick="closeApp('example')"></span>
-            <span class="max" onclick="maxApp('example', 0)"></span>
-            <span class="min" onclick="minApp('example', 0)"></span>
-            <span class="titleText">Window 2</span>
+            <span class="close" onclick="closeApp('calc')"></span>
+            <span class="max" onclick="maxApp('calc', 0)"></span>
+            <span class="min" onclick="minApp('calc', 0)"></span>
+            <span class="titleText">Calculator</span>
         </div>
         <div class="windowContent">
             <%= render 'apps/calc' %>
