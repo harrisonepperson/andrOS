@@ -121,7 +121,7 @@ body
         border-radius: 0px;
         text-align: center;
         z-index: 99;
-
+        width: 38%;
         table
         {
             margin: 15px auto;
@@ -493,10 +493,17 @@ body
         height: 15px;
         z-index: 99;
     }
-    
-
-    
-    
+    .searchApps{
+        width: 33%;
+        position: fixed;
+        z-index: 100;
+        position: fixed;
+        top: 100px;
+        left: 90px;
+    }
+    .appTitle{
+        display:none;
+    }
     
     
     

@@ -34,6 +34,17 @@ $(document).ready(function(){
             $("#exampleFrame").toggle("fast", "linear");
         }
     );
+    (function ($) {
+
+        $('#filter').keyup(function () {
+
+            var rex = new RegExp($(this).val(), 'i');
+            $('.searchable td').hide();
+            $('.searchable td').filter(function () {
+                return rex.test($(this).text());
+            }).show();
+        })
+    }($));
 
     //Runs clock function when the DOM loads  
     $(startTime);
