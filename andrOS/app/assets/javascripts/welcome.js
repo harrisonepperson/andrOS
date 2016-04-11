@@ -12,6 +12,7 @@ $(function() {
     });
 
 });
+
 $(document).ready(function(){
     $(".toggleApps").click(
         function()
@@ -32,10 +33,13 @@ $(document).ready(function(){
         {
             $("#exampleFrame").toggle("fast", "linear");
         }
-    );  
+    );
+
+    //Runs clock function when the DOM loads  
     $(startTime);
         
 }); onclick="launchApp('example')";
+
 function startTime()
 {
     var today = new Date();
@@ -51,9 +55,13 @@ function startTime()
 
 function checkTime(i)
 {
-    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    if (i < 10)
+    {
+        i = "0" + i;
+    }  // add zero in front of numbers < 10
     return i;
 }
+
 function www()
 {
     var x = document.getElementById("www").value;
