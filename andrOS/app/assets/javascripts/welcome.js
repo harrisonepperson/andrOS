@@ -14,32 +14,21 @@ $(function() {
 });
 
 $(document).ready(function(){
-    $(".toggleApps").click(
-        function()
-        {
+    $(".toggleApps").click(function(){
             $("#apps").toggle("fast", "linear");
-        }
-    );
-
-    $(".toggleBrowser").click(
-        function()
-        {
+    });
+    $(".toggleBrowser").click(function(){
             $("#browserFrame").toggle("fast", "linear");
-        }
-    );
+    });
 
-    $(".toggleExample").click(
-        function()
-        {
+    $(".toggleExample").click(function(){
             $("#exampleFrame").toggle("fast", "linear");
-        }
-    );
+    });
     $("#calcFrame").hide();
-    $(".toggleCalculator").click(function()
-        {
+    $(".toggleCalculator").click(function(){
             $("#calcFrame").toggle("fast", "linear");
-        }
-    );
+            launchApp($('#calcApp').index());
+    });
     (function ($) {
 
         $('#filter').keyup(function () {
@@ -51,8 +40,7 @@ $(document).ready(function(){
             }).show();
         })
     }($));
-    $('#calcFrame').click(function(){
-        launchApp('calc');
+    $('#calcFrame').click(function(){        
         makeActive('calc');
     });
     //Runs clock function when the DOM loads  
@@ -90,29 +78,27 @@ function www()
 
 function launchApp(app)
 {
-    var test1 = String(app).trim();
-    //appList.push(test1);
-    document.getElementById(app).style.display = "show";  
-    document.getElementById(app).className += " active";
-    //appList.push(app);
-    var found = $.inArray(test1.toString(), appList);
+    //var testString = app.toString();
+    //document.getElementById(app).style.display = "show";  
+    ;
+    var found = $.inArray(app, appList);
     if (found >= 0) {
-        appList.splice(found, 1);
+        appList.splice(app, 1);
     } else {
         // Element was not found, add it.
-        appList.push(test1);
+        appList.push(app);
     }
- 
+    console.log(appList[0]);
+    console.log("Length " + appList.length)
 }
-
 function makeActive(app)
 {
-    
+
     document.getElementById(app).className += " active";
-    for(var i = 0;i<appList.length;i++){
+    /*for(var i = 0;i<appList.length;i++){
         //document.getElementById().removeClass('active');
-        console.log(appList[i]);
-    }
+        //console.log(appList[i]);
+    }*/
 
 }
 
