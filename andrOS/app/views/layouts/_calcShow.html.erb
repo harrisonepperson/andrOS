@@ -1,0 +1,13 @@
+<div class="draggable" style="display:show;" id="calcFrame">
+    <div class="window" id="calc">
+        <div class="titleBar">
+            <span class="close" onclick="closeApp('calc')"></span>
+            <span class="max" onclick="maxApp('calc', 0)"></span>
+            <span class="min" onclick="minApp('calc', 0)"></span>
+            <span class="titleText">Calculator</span>
+        </div>
+        <div class="windowContent">
+            <%= render 'apps/calc' %>
+        </div>
+    </div>
+</div>
