@@ -5,7 +5,10 @@
         <%= javascript_include_tag 'application' %>
         <%= csrf_meta_tags %>    
     </head>
-    <body>   
+    <body> 
+        <%= render 'layouts/notesShow' %>  
+        <%= render 'layouts/browserShow' %> 
+        <%= render 'layouts/paintShow' %>   
         <%= render 'layouts/calcShow' %> 
         <%= render 'layouts/navbar' %>
         <%= render 'layouts/notNav' %>

@@ -1,0 +1,21 @@
+<div id="page-wrapper" class="clearfix">
+    <form action="#" method="POST" id="file-form">
+      <div class="field">
+        <button type="submit"><i class="glyphicon glyphicon-floppy-disk"></i></button>
+        <div id="messages"></div>
+      </div>
+      <div class="field">
+        <input type="text" name="filename" id="filename" placeholder="Filename (e.g. andOS.txt)">
+      </div>
+      <div class="field">
+        <textarea name="content" id="content" placeholder="Type your content here..."></textarea>
+      </div>
+    
+    </form>
+  <% if current_user %>
+    <div id="files">
+      <ul id="file-list"></ul>
+    </div>
+   <% end %>  
+
+  </div>
