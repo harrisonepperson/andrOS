@@ -1,6 +1,7 @@
 /*TUTORIAL
 //http://blog.teamtreehouse.com//*building-an-html5-text-editor-with-the-filesystem-apis*/
-
+//https://github.com/galetahub/ckeditor
+//https://github.com/jejacks0n/mercury
 window.onload = function() {
 
   // Allow for vendor prefixes.
