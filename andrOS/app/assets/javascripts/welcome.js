@@ -19,7 +19,8 @@ $(document).ready(function(){
     $("#calcFrame").hide();
     $("#drawFrame").hide();
     $("#browserFrame").hide();
-
+    $("#notesFrame").hide();
+     $("#textfileFrame").hide();
     //Toggle Apps
     $(".toggleApps").click(function(){
             $("#apps").toggle("fast", "linear");
@@ -38,6 +39,10 @@ $(document).ready(function(){
     $(".toggleBrowser").click(function(){
             $("#browserFrame").toggle("fast", "linear");
             launchApp($('#browserApp').index());
+    });
+     $(".toggleTextFile").click(function(){
+            $("#textfileFrame").toggle("fast", "linear");
+            launchApp($('#textfileApp').index());
     });
     //Search Apps
     (function ($) {
@@ -58,6 +63,9 @@ $(document).ready(function(){
     });
     $('#browserFrame').click(function(){        
         makeActive('browser');
+    });
+    $('#textfileFrame').click(function(){        
+        makeActive('textfile');
     });
     //Runs clock function when the DOM loads  
     $(startTime);
