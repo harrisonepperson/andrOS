@@ -164,7 +164,7 @@ function launchApp(app)
 function makeActive(app)
 {
 
-    document.getElementById(app).className += " active";
+    $("#" + app).addClass("active");
     /*for(var i = 0;i<appList.length;i++){
         //document.getElementById().removeClass('active');
         //console.log(appList[i]);
