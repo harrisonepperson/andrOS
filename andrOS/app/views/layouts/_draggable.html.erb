@@ -1,10 +1,14 @@
-<div class="draggable" style="display:none;" id="exampleFrame" onclick="makeActive('example');">
+<div class="draggable" style="display:none;" id="exampleFrame" data-app="example">
     <div class="window" id="example">
         <div class="titleBar">
             <span class="close" onclick="closeApp('example')"></span>
-            <span class="max" onclick="maxApp('example', 0)"></span>
-            <span class="min" onclick="minApp('example', 0)"></span>
-            <span class="titleText">Window 2</span>
+            <span class="max" onclick="snapApp('example', 2)"></span>
+            <span class="rest none" onclick="snapApp('example', 0)"></span>
+            <span class="min" onclick="minApp('example')"></span>
+            <span class="titleText">Example</span>
+
+            <span class="rightArrow" onclick="snapApp('example', 1)"></span>
+            <span class="leftArrow" onclick="snapApp('example', -1)"></span>
         </div>
         <div class="windowContent">
             <h3>Drag Me!</h3>
@@ -21,7 +25,7 @@
                 Cras quis vulputate odio. Proin metus enim, lacinia pulvinar mauris sed, cursus semper dolor. Cras vitae varius erat, vitae convallis diam. Duis laoreet, nisi non egestas commodo, massa dolor dignissim est, ac pulvinar mauris orci quis lectus. In eu feugiat odio. Nulla suscipit leo a mi volutpat, sit amet lacinia est tempor. Duis magna velit, porttitor in orci ut, pellentesque venenatis nisi. Nam quis leo bibendum, luctus augue sed, vulputate neque. Aliquam erat volutpat. Donec vulputate ornare justo, congue condimentum enim sagittis lobortis. Nunc hendrerit varius turpis, in vulputate felis venenatis vitae. Vivamus porta dolor at mauris consectetur, id suscipit sem hendrerit.
             </p>
             <p>
-                Pellentesque iaculis posuere faucibus. Duis non tempus velit, non bibendum purus. Nullam sit amet magna massa. Phasellus aliquam quam at rutrum malesuada. Maecenas gravida vulputate tempor. Vivamus vulputate et nisi id bibendum. Nulla in diam convallis, finibus ante ac, pretium neque. 
+                Pellentesque iaculis posuere faucibus. Duis non tempus velit, non bibendum purus. Nullam sit amet magna massa. Phasellus aliquam quam at rutrum malesuada. Maecenas gravida vulputate tempor. Vivamus vulputate et nisi id bibendum. Nulla in diam convallis, finibus ante ac, pretium neque.
             </p>
         </div>
     </div>

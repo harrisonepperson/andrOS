@@ -30,11 +30,12 @@ $(document).ready(function(){
     });
     $(".toggleCalculator").click(function(){
             $("#calcFrame").toggle("fast", "linear");
-            launchApp($('#calcApp').index());
+            //launchApp($('#calcApp').index());
+            launchApp('#calcApp');
     });
     $(".togglePaint").click(function(){
             $("#paintFrame").toggle("fast", "linear");
-            launchApp($('#paintApp').index());
+            launchApp('#paintApp');
     });
     (function ($) {
 
@@ -48,9 +49,11 @@ $(document).ready(function(){
         })
     }($));
 
-    //Sets an arbitrary window as active based on html data tag
-    $('.draggable').click(function (e) {
+    //Activate a Window based on HTML data tag
+    $('.draggable').mousedown(function (e) {
         e.preventDefault();
+
+        appList.forEach(removeActive);
 
         var window = $(this).data('app');
         $("#" + window).addClass("active");
@@ -125,6 +128,13 @@ $(document).ready(function(){
 
 });
 
+function removeActive(item, index)
+{
+    //$(item).removeClass("active");
+
+    console.log(index + ", " + item);
+}
+
 function startTime()
 {
     var today = new Date();
@@ -157,7 +167,7 @@ function launchApp(app)
 {
     //var testString = app.toString();
     //document.getElementById(app).style.display = "show";
-    ;
+    //;
     var found = $.inArray(app, appList);
     if (found >= 0) {
         appList.splice(app, 1);
@@ -165,28 +175,65 @@ function launchApp(app)
         // Element was not found, add it.
         appList.push(app);
     }
-    console.log(appList[0]);
+
+    console.log(appList[1]);
     console.log("Length " + appList.length)
 }
 
 function closeApp(app)
 {
-    document.getElementById(app).hide();
+    $("#" + app).hide();
 }
 
-function maxApp(app, condition)
+function snapApp(app, condition)
 {
-    if(condition)
+
+    //  -1 = left
+    //   0 = restore
+    //   1 = right
+    //   2 = max
+
+    if(condition == -1)
     {
-        document.getElementById(app).className += " maximize";
+        $("#" + app).addClass("left");
+        $("#" + app).removeClass("right");
+        $("#" + app).removeClass("maximize");
+
+        $("#" + app + " .max").addClass("none");
+        $("#" + app + " .rest").removeClass("none");
     }
-    else
+    else if(condition == 0)
     {
-        //document.getElementById(i).className = document.getElementById(i).className.replace( /(?:^|\s)active(?!\S)/g , '' );
+        $("#" + app).removeClass("left");
+        $("#" + app).removeClass("right");
+        $("#" + app).removeClass("maximize");
+
+        $("#" + app + " .max").removeClass("none");
+        $("#" + app + " .rest").addClass("none");
+    }
+
+    else if(condition == 1)
+    {
+        $("#" + app).removeClass("left");
+        $("#" + app).addClass("right");
+        $("#" + app).removeClass("maximize");
+
+        $("#" + app + " .max").addClass("none");
+        $("#" + app + " .rest").removeClass("none");
+    }
+
+    else if(condition == 2)
+    {
+        $("#" + app).removeClass("left");
+        $("#" + app).removeClass("right");
+        $("#" + app).addClass("maximize");
+
+        $("#" + app + " .rest").removeClass("none");
+        $("#" + app + " .max").addClass("none");
     }
 }
 
-function minApp(app, condition)
+function minApp(app)
 {
-    document.getElementById(app).hide();
+    $("#" + app).hide();
 }

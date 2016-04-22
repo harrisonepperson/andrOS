@@ -2,9 +2,13 @@
     <div class="window" id="calc">
         <div class="titleBar">
             <span class="close" onclick="closeApp('calc')"></span>
-            <span class="max" onclick="maxApp('calc', 0)"></span>
-            <span class="min" onclick="minApp('calc', 0)"></span>
+            <span class="max" onclick="snapApp('calc', 2)"></span>
+            <span class="rest none" onclick="snapApp('calc', 0)"></span>
+            <span class="min" onclick="minApp('calc')"></span>
             <span class="titleText">Calculator</span>
+
+            <span class="rightArrow" onclick="snapApp('calc', 1)"></span>
+            <span class="leftArrow" onclick="snapApp('calc', -1)"></span>
         </div>
         <div class="windowContent">
             <%= render 'apps/calc' %>
