@@ -23,19 +23,21 @@ $(document).ready(function(){
     });
     $(".toggleBrowser").click(function(){
             $("#browserFrame").toggle("fast", "linear");
+            launchApp('#browser');
     });
 
     $(".toggleExample").click(function(){
             $("#exampleFrame").toggle("fast", "linear");
+            launchApp('#example');
     });
     $(".toggleCalculator").click(function(){
             $("#calcFrame").toggle("fast", "linear");
             //launchApp($('#calcApp').index());
-            launchApp('#calcApp');
+            launchApp('#calc');
     });
     $(".togglePaint").click(function(){
             $("#paintFrame").toggle("fast", "linear");
-            launchApp('#paintApp');
+            launchApp('#paint');
     });
     (function ($) {
 
@@ -56,6 +58,7 @@ $(document).ready(function(){
         appList.forEach(removeActive);
 
         var window = $(this).data('app');
+        $("#" + window).removeClass("sink");
         $("#" + window).addClass("active");
 
     });
@@ -130,7 +133,8 @@ $(document).ready(function(){
 
 function removeActive(item, index)
 {
-    //$(item).removeClass("active");
+    $(item).removeClass("active");
+    $(item).addClass("sink");
 
     console.log(index + ", " + item);
 }
