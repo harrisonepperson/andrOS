@@ -19,6 +19,7 @@ $(document).ready(function(){
 
     $(".toggleApps").click(function(){
             $("#apps").toggle("fast", "linear");
+            $("#filter").autofocus="true";
     });
     $(".toggleBrowser").click(function(){
             $("#browserFrame").toggle("fast", "linear");
@@ -40,16 +41,16 @@ $(document).ready(function(){
         $('#filter').keyup(function () {
 
             var rex = new RegExp($(this).val(), 'i');
-            $('.searchable td').hide();
-            $('.searchable td').filter(function () {
+            $('.searchable li').hide("fast", "linear");
+            $('.searchable li').filter(function () {
                 return rex.test($(this).text());
-            }).show();
+            }).show("fast", "linear");
         })
     }($));
-    $('#calcFrame').click(function(){        
+    $('#calcFrame').click(function(){
         makeActive('calc');
     });
-    //Runs clock function when the DOM loads  
+    //Runs clock function when the DOM loads
     $(startTime);
     var color = $(".selected").css("background-color");
       var $canvas = $("canvas");
@@ -66,7 +67,7 @@ $(document).ready(function(){
         //cache current color
         color = $(this).css("background-color");
       });
-        
+
       //When "New Color" is pressed
       $("#revealColorSelect").click(function(){
         //Show color select or hide the color select
@@ -114,7 +115,7 @@ $(document).ready(function(){
       }).mouseleave(function(){
         $canvas.mouseup();
       });
-        
+
 });
 
 function startTime()
@@ -148,7 +149,7 @@ function www()
 function launchApp(app)
 {
     //var testString = app.toString();
-    //document.getElementById(app).style.display = "show";  
+    //document.getElementById(app).style.display = "show";
     ;
     var found = $.inArray(app, appList);
     if (found >= 0) {
@@ -173,7 +174,7 @@ function makeActive(app)
 
 function closeApp(app)
 {
-    document.getElementById(app).style.display = "none";
+    document.getElementById(app).hide();
 }
 
 function maxApp(app, condition)
@@ -190,6 +191,5 @@ function maxApp(app, condition)
 
 function minApp(app, condition)
 {
-    document.getElementById(app).style.display = "none";
+    document.getElementById(app).hide();
 }
-
