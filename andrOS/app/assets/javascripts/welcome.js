@@ -47,9 +47,16 @@ $(document).ready(function(){
             }).show("fast", "linear");
         })
     }($));
-    $('#calcFrame').click(function(){
-        makeActive('calc');
+
+    //Sets an arbitrary window as active based on html data tag
+    $('.draggable').click(function (e) {
+        e.preventDefault();
+
+        var window = $(this).data('app');
+        $("#" + window).addClass("active");
+
     });
+
     //Runs clock function when the DOM loads
     $(startTime);
     var color = $(".selected").css("background-color");
@@ -160,16 +167,6 @@ function launchApp(app)
     }
     console.log(appList[0]);
     console.log("Length " + appList.length)
-}
-function makeActive(app)
-{
-
-    $("#" + app).addClass("active");
-    /*for(var i = 0;i<appList.length;i++){
-        //document.getElementById().removeClass('active');
-        //console.log(appList[i]);
-    }*/
-
 }
 
 function closeApp(app)
