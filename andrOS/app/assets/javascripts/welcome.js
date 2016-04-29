@@ -73,8 +73,7 @@ $(document).ready(function(){
     });
     //Runs clock function when the DOM loads  
     $(startTime);
-
-    $(startGame);
+    
     
         
 });

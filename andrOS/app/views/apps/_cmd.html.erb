@@ -1,0 +1,28 @@
+ <div contenteditable="true" style="min-height:300px; width:300px;" id="txtDiv" class="cmd">
+ 	<label contenteditable="false" id="foo" readonly>~$&nbsp</label>
+ </div>
+
+
+
+<script>
+	 var ContentofDiv = $('#txtDiv').html();
+	/* while(true){
+	 	$("#foo").fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
+	 }*/
+	 //$('input#mybutton').click(function() {
+    	var text = $('#txtDiv').text();
+    	//var script = document.createElement('script');
+    	//script.src = "http://l2.io/ip.js?var=myip";
+    	$("#txtDiv").keypress(function(e) {
+    		
+		    if(e.which == 13) {
+		        $("#txtDiv").text(myip);
+		    }
+		});
+    
+    
+	//});
+	 
+</script>
+<script type="text/javascript" src="http://l2.io/ip.js?var=myip"></script>
+                                                      <!-- ^^^^ -->
