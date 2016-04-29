@@ -20,7 +20,7 @@ $(document).ready(function(){
     $("#drawFrame").hide();
     $("#browserFrame").hide();
     $("#notesFrame").hide();
-     $("#textfileFrame").hide();
+    $("#textfileFrame").hide();
     //Toggle Apps
     $(".toggleApps").click(function(){
             $("#apps").toggle("fast", "linear");
@@ -43,6 +43,10 @@ $(document).ready(function(){
      $(".toggleTextFile").click(function(){
             $("#textfileFrame").toggle("fast", "linear");
             launchApp($('#textfileApp').index());
+    });
+    $(".toggleNotes").click(function(){
+            $("#notesFrame").toggle("fast", "linear");
+            launchApp($('#notesApp').index());
     });
     //Search Apps
     (function ($) {
@@ -69,6 +73,8 @@ $(document).ready(function(){
     });
     //Runs clock function when the DOM loads  
     $(startTime);
+
+
     
         
 });
