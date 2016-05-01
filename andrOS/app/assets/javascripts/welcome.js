@@ -56,6 +56,10 @@ $(document).ready(function(){
             $("#cmdFrame").toggle("fast", "linear");
             launchApp('cmd');
     });
+	$(".togglePres").click(function(){
+		$("#presFrame").toggle("fast", "linear");
+		launchApp('pres');
+	});
     //Search Apps
     (function ($) {
         $('#filter').keyup(function () {

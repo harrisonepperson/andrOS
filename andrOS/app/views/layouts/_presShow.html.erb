@@ -1,0 +1,17 @@
+<div class="draggable" style="display:none;" id="presFrame" data-app="pres">
+    <div class="window" id="pres">
+        <div class="titleBar">
+            <span class="close" onclick="closeApp('pres')"></span>
+            <span class="max" onclick="snapApp('pres', 2)"></span>
+            <span class="rest none" onclick="snapApp('pres', 0)"></span>
+            <span class="min" onclick="minApp('pres')"></span>
+            <span class="titleText">Presentation</span>
+
+            <span class="rightArrow" onclick="snapApp('pres', 1)"></span>
+            <span class="leftArrow" onclick="snapApp('pres', -1)"></span>
+        </div>
+        <div class="windowContent nomarg nopad">
+            <%= render 'apps/pres' %>
+        </div>
+    </div>
+</div>
