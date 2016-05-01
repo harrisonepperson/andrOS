@@ -1,4 +1,4 @@
-<div class="draggable" style="display:show;" id="drawFrame" data-app="draw">
+<div class="draggable" style="display:none;" id="drawFrame" data-app="draw">
     <div class="window" id="draw">
         <div class="titleBar">
             <span class="close" onclick="closeApp('draw')"></span>
@@ -11,7 +11,7 @@
             <span class="leftArrow" onclick="snapApp('draw', -1)"></span>
         </div>
         <div class="windowContent">
-            <%= render 'apps/draw' %>
+            <%= render 'apps/paint' %>
         </div>
     </div>
 </div>

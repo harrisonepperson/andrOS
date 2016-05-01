@@ -38,23 +38,23 @@ $(document).ready(function(){
     });
     $(".toggleDraw").click(function(){
             $("#drawFrame").toggle("fast", "linear");
-            launchApp($('#drawApp').index());
+            launchApp('#draw');
     });
     $(".toggleBrowser").click(function(){
             $("#browserFrame").toggle("fast", "linear");
-            launchApp($('#browserApp').index());
+            launchApp('#browser');
     });
      $(".toggleTextFile").click(function(){
             $("#textfileFrame").toggle("fast", "linear");
-            launchApp($('#textfileApp').index());
+            launchApp('#textfile');
     });
     $(".toggleNotes").click(function(){
             $("#notesFrame").toggle("fast", "linear");
-            launchApp($('#notesApp').index());
+            launchApp('#notes');
     });
     $(".toggleCmd").click(function(){
             $("#cmdFrame").toggle("fast", "linear");
-            launchApp($('#cmdApp').index());
+            launchApp('#cmd');
     });
     //Search Apps
     (function ($) {
