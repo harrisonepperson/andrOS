@@ -1,4 +1,19 @@
-<div class="jumbotron">
+<!--div class="jumbotron">
   <h1>Welcome!</h1>
   <p>Authenticate via one of the social networks to get started.</p>
+</div-->
+
+<div class="background"></div>
+
+<div class="loginBox">
+	<div class="loginBox-dialog">
+		<div class="loginBox-content">
+			<div class="btn-group btn-group-dark">
+				<%= link_to '/auth/google' do%>
+					<button type="button" class="btn btn-default btn-dark">Log In</button>
+				<% end %>
+				<label>With Google</label>
+			</div>
+		</div>
+	</div>
 </div>

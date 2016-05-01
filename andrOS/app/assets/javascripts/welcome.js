@@ -172,21 +172,63 @@ function launchApp(app)
     //var testString = app.toString();
     //document.getElementById(app).style.display = "show";
     //;
+
+
     var found = $.inArray(app, appList);
     if (found >= 0) {
         appList.splice(app, 1);
     } else {
         // Element was not found, add it.
         appList.push(app);
+	    
+	    //Adds the element to the dock with a default pic
+	    var parent = document.getElementById("dockCenter");
+	    var child = document.createElement("span");
+	    child.className = "glyphicon glyphicon-ok toggleCalculator";
+	    child.setAttribute("id", "dock" + app);
+	//var node = document.createTextNode("x");
+	//child.appendChild(node);
+	    
+	    parent.appendChild(child);
+	    
+	    //Right now the default "check" is used as the app icon, we'll have to scoure the pic info from the html data element to actually have that work.
+	    
     }
 
     console.log(appList[1]);
     console.log("Length " + appList.length)
+    
+    
+    
+    
+var para = document.createElement("p");
+var node = document.createTextNode("This is new.");
+para.appendChild(node);
+
+var element = document.getElementById("div1");
+element.appendChild(para);
+    
+    
+    
 }
 
 function closeApp(app)
 {
-    $("#" + app).hide();
+	//hides the app and resets teh windows size
+	$("#" + app + "Frame").toggle("fast", "linear");
+	$("#" + app).removeClass("left");
+        $("#" + app).removeClass("right");
+        $("#" + app).removeClass("maximize");
+	$("#" + app + " .max").removeClass("none");
+        $("#" + app + " .rest").addClass("none");
+	
+	//Removes the element from the dock
+	var parent = document.getElementById("dockCenter");
+	var child = document.getElementById("dock#" + app);
+	parent.removeChild(child);
+	
+	//remove the app from the array.
+	
 }
 
 function snapApp(app, condition)
@@ -239,5 +281,5 @@ function snapApp(app, condition)
 
 function minApp(app)
 {
-    $("#" + app).hide();
+	$("#" + app + "Frame").toggle("fast", "linear");
 }

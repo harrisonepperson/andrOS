@@ -1,0 +1,79 @@
+$dGrey: #222;
+$sGrey: #333;
+$bGrey: #444;
+$Grey: #555;
+$lGrey: #ddd;
+
+
+.background
+{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: -10;
+	background-color: rgba(0,0,0,.4);
+	background-repeat: no-repeat;
+	background-position: center;
+	overflow: hidden;
+}
+
+.loginBox
+{
+	text-align: center;
+	//margin: 0px 20%;
+
+	.loginBox-dialog
+	{
+		display: inline-block;
+		text-align: left;
+		vertical-align: middle;
+
+		.loginBox-content
+		{
+			background-color: $dGrey;
+			color: $lGrey;
+			border-style: solid;
+			border-width: 1px;
+			border-color: $Grey;
+			border-radius: 5px;
+			padding: 25px;
+			box-shadow: 0px 0px 25px -5px rgba(0,0,0,1);
+
+			.btn-group-dark
+			{
+				.btn-dark
+				{
+					background-image: none;
+					background-color: $Grey;
+					border-color: #444;
+					color: $lGrey;
+					font-weight: bold;
+					text-shadow: none;
+					text-decoration: none;
+
+					transition: all .2s linear 0s;
+				}
+
+				.btn-dark:hover
+				{
+					text-decoration: none;
+					color: $lGrey;
+					background-color: #333;
+					box-shadow: inset 0px 0px 7px -2px rgba(0,0,0,.6);
+
+					transition: all .1s linear 0s;
+				}
+			}
+		}
+	}
+	&:before
+	{
+		content: '';
+		display: inline-block;
+		height: 100%;
+		vertical-align: middle;
+		margin-right: -4px;
+	}
+}

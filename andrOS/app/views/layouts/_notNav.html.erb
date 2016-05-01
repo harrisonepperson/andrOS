@@ -1,6 +1,8 @@
 <div id="notNav">
+	<% if current_user %>
 	<%= render 'layouts/calcShow' %>
-	<%= render 'layouts/paintShow' %> 
 	<%= render 'layouts/apps' %>
 	<%= render 'layouts/draggable' %>
+	<%= render 'layouts/paintShow' %>
+	<% end %>
 </div>

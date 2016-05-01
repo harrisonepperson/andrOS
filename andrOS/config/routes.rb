@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root to: 'pages#index'
+	get '/pages/index'
+	root 'pages#index'
   get '/auth/:provider/callback', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 

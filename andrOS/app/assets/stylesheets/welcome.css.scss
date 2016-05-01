@@ -8,9 +8,11 @@ $lGrey: #ddd;
 
 body
 {
-    background-image: image-url("back.jpg");
+	background-color: #a0a0a0!important;
+    background-image: image-url("andros.jpg");
     background-repeat: no-repeat;
     background-position: center;
+	background-size:cover;
     overflow: hidden;
     width: 100%;
     height: 100%;
@@ -109,6 +111,15 @@ body
                 }
             }
         }
+	    
+	&:before
+	{
+		content: '';
+		display: inline-block;
+		height: 100%;
+		vertical-align: middle;
+		margin-right: -4px;
+	}
     }
 
     .jumbotron
@@ -122,14 +133,16 @@ body
         border-radius: 0px;
         text-align: center;
         z-index: 99;
-        width: calc(100% - 100px);
+        /*width: calc(100% - 100px);
         height: calc(100% - 125px);
         width: -webkit-calc(100% - 100px);
         height: -webkit-calc(100% - 125px);
         width: -moz-calc(100% - 100px);
         height: -moz-calc(100% - 125px);
         width: -o-calc(100% - 100px);
-        height: -o-calc(100% - 125px);
+        height: -o-calc(100% - 125px);*/
+	width: 500px;
+	height: 500px;
 
         h3
         {
@@ -419,14 +432,14 @@ body
         transition: all .1s linear 0s;
     }
 
-    .modal:before
+    /*.modal:before
     {
         content: '';
         display: inline-block;
         height: 100%;
         vertical-align: middle;
         margin-right: -4px;
-    }
+    }*/
 
     #www
     {
