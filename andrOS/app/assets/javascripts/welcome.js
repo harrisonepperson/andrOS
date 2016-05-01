@@ -14,16 +14,18 @@ $(function() {
 });
 
 $(document).ready(function(){
-    $("#calcFrame").hide();
-    $("#paintFrame").hide();
 
+    //Hide apps in initial stay can be done with CSS display:none too
+    $("#calcFrame").hide();
+    $("#drawFrame").hide();
+    $("#browserFrame").hide();
+    $("#notesFrame").hide();
+    $("#textfileFrame").hide();
+    $("#cmdFrame").hide();
+    //Toggle Apps
     $(".toggleApps").click(function(){
             $("#apps").toggle("fast", "linear");
     });
-    $(".toggleBrowser").click(function(){
-            $("#browserFrame").toggle("fast", "linear");
-    });
-
     $(".toggleExample").click(function(){
             $("#exampleFrame").toggle("fast", "linear");
     });
@@ -31,14 +33,29 @@ $(document).ready(function(){
             $("#calcFrame").toggle("fast", "linear");
             launchApp($('#calcApp').index());
     });
-    $(".togglePaint").click(function(){
-            $("#paintFrame").toggle("fast", "linear");
-            launchApp($('#paintApp').index());
+    $(".toggleDraw").click(function(){
+            $("#drawFrame").toggle("fast", "linear");
+            launchApp($('#drawApp').index());
     });
+    $(".toggleBrowser").click(function(){
+            $("#browserFrame").toggle("fast", "linear");
+            launchApp($('#browserApp').index());
+    });
+     $(".toggleTextFile").click(function(){
+            $("#textfileFrame").toggle("fast", "linear");
+            launchApp($('#textfileApp').index());
+    });
+    $(".toggleNotes").click(function(){
+            $("#notesFrame").toggle("fast", "linear");
+            launchApp($('#notesApp').index());
+    });
+    $(".toggleCmd").click(function(){
+            $("#cmdFrame").toggle("fast", "linear");
+            launchApp($('#cmdApp').index());
+    });
+    //Search Apps
     (function ($) {
-
         $('#filter').keyup(function () {
-
             var rex = new RegExp($(this).val(), 'i');
             $('.searchable td').hide();
             $('.searchable td').filter(function () {
@@ -46,74 +63,96 @@ $(document).ready(function(){
             }).show();
         })
     }($));
+    //Making Apps Active
     $('#calcFrame').click(function(){        
         makeActive('calc');
     });
+    $('#drawFrame').click(function(){        
+        makeActive('draw');
+    });
+    $('#browserFrame').click(function(){        
+        makeActive('browser');
+    });
+    $('#textfileFrame').click(function(){        
+        makeActive('textfile');
+    });
     //Runs clock function when the DOM loads  
     $(startTime);
-    var color = $(".selected").css("background-color");
-      var $canvas = $("canvas");
-      var context = $canvas[0].getContext("2d");
-      var lastEvent;
-      var mouseDown = false;
-
-      //When clicking on control list items
-      $(".controls").on("click", "li", function(){
-        //Deselect sibling elements
-        $(this).siblings().removeClass("selected");
-        //Select clicked element
-        $(this).addClass("selected");
-        //cache current color
-        color = $(this).css("background-color");
-      });
+    
+    //TERMINAL
+    var ContentofDiv = $('#txtDiv').html();
+    var cmdText= "";
+    var text = $('#txtDiv').text();
+    var connection= "Networking connection:" + " " +navigator.onLine;
+    var engine= "Engine Name of the browser:" + " " +navigator.product;
+    var cookies="Cookies enabled:" + " " +navigator.cookieEnabled;
+    var lang="Broweser language:" + " " +navigator.language;
+    var browserV="Broweser version information:" + " " +navigator.appVersion;
+    
+    $("#cmdIn").keypress(function(e) {
         
-      //When "New Color" is pressed
-      $("#revealColorSelect").click(function(){
-        //Show color select or hide the color select
-        changeColor();
-        $("#colorSelect").toggle();
-      });
-
-      //update the new color span
-      function changeColor() {
-        var r = $("#red").val();
-        var g = $("#green").val();
-        var b = $("#blue").val();
-        $("#newColor").css("background-color", "rgb(" + r + "," + g +", " + b + ")");
-      }
-
-      //When color sliders change
-      $("input[type=range]").change(changeColor);
-
-      //When "Add Color" is pressed
-      $("#addNewColor").click(function(){
-        //Append the color to the controls ul
-        var $newColor = $("<li></li>");
-        $newColor.css("background-color", $("#newColor").css("background-color"));
-        $(".controls ul").append($newColor);
-        //Select the new color
-        $newColor.click();
-      });
-
-      //On mouse events on the canvas
-      $canvas.mousedown(function(e){
-        lastEvent = e;
-        mouseDown = true;
-      }).mousemove(function(e){
-        //Draw lines
-        if(mouseDown) {
-          context.beginPath();
-          context.moveTo(lastEvent.offsetX, lastEvent.offsetY);
-          context.lineTo(e.offsetX, e.offsetY);
-          context.strokeStyle = color;
-          context.stroke();
-          lastEvent = e;
+        if(e.which == 13) {
+            //style="min-height:600px; width:600px;"
+            //style="min-height:520px; width:600px;"
+            if($("#cmdIn").val() == "ip config" || $("#cmdIn").val()==1){              
+               
+               cmdText = $("#cmdResult").text();    
+               $("#cmdResult").text("");           
+               $("#cmdResult").text(cmdText+"~$ "+ myip +"\n");
+               $("#cmdIn").val("");;
+            }
+            else if($("#cmdIn").val() == "cnx" ||$("#cmdIn").val() == "2"){
+               cmdText = $("#cmdResult").text();    
+               $("#cmdResult").text("");           
+               $("#cmdResult").text(cmdText+"~$ "+connection+"\n");
+               $("#cmdIn").val("");
+            }
+            else if($("#cmdIn").val() == "3"){
+               cmdText = $("#cmdResult").text();    
+               $("#cmdResult").text("");           
+               $("#cmdResult").text(cmdText+"~$ "+engine+"\n");
+               $("#cmdIn").val("");
+            }
+            else if($("#cmdIn").val() == "4"){
+               cmdText = $("#cmdResult").text();    
+               $("#cmdResult").text("");           
+               $("#cmdResult").text(cmdText+"~$ "+cookies+"\n");
+               $("#cmdIn").val("");
+            }
+            else if($("#cmdIn").val() == "5"){
+               cmdText = $("#cmdResult").text();    
+               $("#cmdResult").text("");           
+               $("#cmdResult").text(cmdText+"~$ "+lang+"\n");
+               $("#cmdIn").val("");
+            }
+            else if($("#cmdIn").val() == "browser -v" ||$("#cmdIn").val() == "6"){
+               cmdText = $("#cmdResult").text();    
+               $("#cmdResult").text("");           
+               $("#cmdResult").text(cmdText+"~$ "+browserV+"\n");
+               $("#cmdIn").val("");
+            }
+            else if($("#cmdIn").val() == "7"){
+               cmdText = $("#cmdResult").text();    
+               $("#cmdResult").text("");           
+               $("#cmdResult").text(cmdText+"~$ "+"App list \n");
+               $("#cmdIn").val("");
+            }
+            else if($("#cmdIn").val() == "clear"){
+                $("#cmdResult").text("");
+                $("#cmdIn").val("");
+                cmdText= "";
+            }
+            else{
+                cmdText = $("#cmdResult").text();   
+               $("#cmdResult").text("");           
+               $("#cmdResult").text("command not found \n");
+               $("#cmdIn").val("");
+            }
+           
         }
-      }).mouseup(function(){
-        mouseDown = false;
-      }).mouseleave(function(){
-        $canvas.mouseup();
-      });
+    });
+    
+    
         
 });
 
@@ -161,14 +200,18 @@ function launchApp(app)
     console.log("Length " + appList.length)
 }
 function makeActive(app)
-{
+{    
+    for(var i = 0;i<appList.length;i++){
+      
+        if($("#"+appList[i]).hasClass('active')){
+          console.log(true);
 
-    document.getElementById(app).className += " active";
-    /*for(var i = 0;i<appList.length;i++){
-        //document.getElementById().removeClass('active');
-        //console.log(appList[i]);
-    }*/
-
+        }//here the erro it need to use the actual id
+        
+    
+    }
+     document.getElementById(app).className += " active";
+     
 }
 
 function closeApp(app)
