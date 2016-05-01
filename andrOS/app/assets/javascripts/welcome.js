@@ -29,32 +29,32 @@ $(document).ready(function(){
     });
     $(".toggleExample").click(function(){
             $("#exampleFrame").toggle("fast", "linear");
-            launchApp('#example');
+            launchApp('example');
     });
     $(".toggleCalculator").click(function(){
             $("#calcFrame").toggle("fast", "linear");
             //launchApp($('#calcApp').index());
-            launchApp('#calc');
+            launchApp('calc');
     });
     $(".toggleDraw").click(function(){
             $("#drawFrame").toggle("fast", "linear");
-            launchApp('#draw');
+            launchApp('draw');
     });
     $(".toggleBrowser").click(function(){
             $("#browserFrame").toggle("fast", "linear");
-            launchApp('#browser');
+            launchApp('browser');
     });
      $(".toggleTextFile").click(function(){
             $("#textfileFrame").toggle("fast", "linear");
-            launchApp('#textfile');
+            launchApp('textfile');
     });
     $(".toggleNotes").click(function(){
             $("#notesFrame").toggle("fast", "linear");
-            launchApp('#notes');
+            launchApp('notes');
     });
     $(".toggleCmd").click(function(){
             $("#cmdFrame").toggle("fast", "linear");
-            launchApp('#cmd');
+            launchApp('cmd');
     });
     //Search Apps
     (function ($) {
@@ -281,7 +281,7 @@ function launchApp(app)
 
     var found = $.inArray(app, appList);
     if (found >= 0) {
-        appList.splice(app, 1);
+        //appList.splice(app, 1);
     } else {
         // Element was not found, add it.
         appList.push(app);
@@ -289,7 +289,7 @@ function launchApp(app)
 	    //Adds the element to the dock with a default pic
 	    var parent = document.getElementById("dockCenter");
 	    var child = document.createElement("span");
-	    child.className = "glyphicon glyphicon-ok toggleCalculator";
+	    child.className = "glyphicon glyphicon-ok toggle" + app;
 	    child.setAttribute("id", "dock" + app);
 	//var node = document.createTextNode("x");
 	//child.appendChild(node);
@@ -300,7 +300,7 @@ function launchApp(app)
 	    
     }
 
-    console.log(appList[1]);
+    console.log(appList[0]);
     console.log("Length " + appList.length)
     
 	var para = document.createElement("p");
@@ -336,11 +336,12 @@ function closeApp(app)
 	
 	//Removes the element from the dock
 	var parent = document.getElementById("dockCenter");
-	var child = document.getElementById("dock#" + app);
+	var child = document.getElementById("dock" + app);
 	parent.removeChild(child);
 	
 	//remove the app from the array.
-	
+	var i = appList.indexOf(app);
+	delete appList[i];
 }
 
 function snapApp(app, condition)
