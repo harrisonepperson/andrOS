@@ -21,6 +21,7 @@ $(document).ready(function(){
     $("#browserFrame").hide();
     $("#notesFrame").hide();
     $("#textfileFrame").hide();
+    $("#cmdFrame").hide();
     //Toggle Apps
     $(".toggleApps").click(function(){
             $("#apps").toggle("fast", "linear");
@@ -47,6 +48,10 @@ $(document).ready(function(){
     $(".toggleNotes").click(function(){
             $("#notesFrame").toggle("fast", "linear");
             launchApp($('#notesApp').index());
+    });
+    $(".toggleCmd").click(function(){
+            $("#cmdFrame").toggle("fast", "linear");
+            launchApp($('#cmdApp').index());
     });
     //Search Apps
     (function ($) {
