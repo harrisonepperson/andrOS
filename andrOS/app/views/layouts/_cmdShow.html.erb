@@ -1,0 +1,33 @@
+<!--div class="draggable" style="display:show;" id="cmdFrame">
+    <div class="window" id="cmd">
+        <div class="titleBar">
+            <span class="close" onclick="closeApp('cmd')"></span>
+            <span class="max" onclick="maxApp('cmd', 0)"></span>
+            <span class="min" onclick="minApp('cmd', 0)"></span>
+            <span class="titleText">Terminal</span>
+        </div>
+        <div class="windowContent">
+            < %= render 'apps/cmd' %>
+        </div>
+    </div>
+</div-->
+
+
+
+<div class="draggable" style="display:show;" id="cmdFrame" data-app="cmd">
+    <div class="window" id="cmd">
+        <div class="titleBar">
+            <span class="close" onclick="closeApp('cmd')"></span>
+            <span class="max" onclick="snapApp('cmd', 2)"></span>
+            <span class="rest none" onclick="snapApp('cmd', 0)"></span>
+            <span class="min" onclick="minApp('cmd')"></span>
+            <span class="titleText">Terminal</span>
+
+            <span class="rightArrow" onclick="snapApp('cmd', 1)"></span>
+            <span class="leftArrow" onclick="snapApp('cmd', -1)"></span>
+        </div>
+        <div class="windowContent">
+            <%= render 'apps/cmd' %>
+        </div>
+    </div>
+</div>

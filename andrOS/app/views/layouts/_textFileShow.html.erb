@@ -1,0 +1,30 @@
+<!--div class="draggable" style="display:show;" id="textfileFrame">
+    <div class="window" id="textfile">
+        <div class="titleBar">
+            <span class="close" onclick="closeApp('textfile')"></span>
+            <span class="max" onclick="maxApp('textfile', 0)" ></span>
+            <span class="min" onclick="minApp('textfile', 0)"></span>
+            <input value="TextFile App - Google Drive">
+        </div>
+        < %= render 'apps/textFile' %>
+    </div>
+</div-->
+						       
+						       
+<div class="draggable" style="display:show;" id="textFileFrame" data-app="textFile">
+    <div class="window" id="textFile">
+        <div class="titleBar">
+            <span class="close" onclick="closeApp('textFile')"></span>
+            <span class="max" onclick="snapApp('textFile', 2)"></span>
+            <span class="rest none" onclick="snapApp('textFile', 0)"></span>
+            <span class="min" onclick="minApp('textFile')"></span>
+            <input value="TextFile App - Google Drive">
+
+            <span class="rightArrow" onclick="snapApp('textFile', 1)"></span>
+            <span class="leftArrow" onclick="snapApp('textFile', -1)"></span>
+        </div>
+        <div class="windowContent">
+            <%= render 'apps/textFile' %>
+        </div>
+    </div>
+</div>

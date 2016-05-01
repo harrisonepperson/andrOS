@@ -1,17 +1,23 @@
 <html>
-	<head>
-		<title>andrOS</title>
-		<%= stylesheet_link_tag    'application', media: 'all'%>
-		<%= javascript_include_tag 'application' %>
-		<%= csrf_meta_tags %>
-	</head>
-	<body>
-		<%= render 'layouts/navbar' %>
-		<%= render 'layouts/notNav' %>
-		<% if current_user %>
-			<%= render 'layouts/loginModal'%>
-			<%= render 'layouts/dockShow'%>
-		<% end %>
-		<%= yield %>
-	</body>
+    <head>
+        <title>andrOS</title> 
+        <%= stylesheet_link_tag    'application', media: 'all'%>
+        <%= javascript_include_tag 'application' %>
+        <%= csrf_meta_tags %>    
+    </head>
+    <body> 
+	<%= render 'layouts/navbar' %>
+	<%= render 'layouts/notNav' %>
+	<% if current_user %>
+		<%= render 'layouts/cmdShow' %> 
+		<%= render 'layouts/textFileShow' %> 
+		<%= render 'layouts/notesShow' %>  
+		<%= render 'layouts/browserShow' %> 
+		<%= render 'layouts/paintShow' %>   
+		<%= render 'layouts/calcShow' %> 
+		<%= render 'layouts/loginModal'%>  
+		<%= render 'layouts/dockShow'%>     
+	<% end %>
+	<%= yield %>
+    </body>
 </html>

@@ -50,7 +50,6 @@ body
             color: $lGrey;
             font-weight: bold;
             text-align: center;
-            padding: 5px;
         }
     }
 
@@ -420,10 +419,18 @@ body
             z-index: 9;
             box-shadow: 0px 0px 15px 10px rgba(0,0,0,.6);
         }
+<<<<<<< HEAD:andrOS/app/assets/stylesheets/welcome.css.scss
 
         .sink
         {
             z-index: -1;
+=======
+        .noactive
+        {
+            border-color: $dGrey;
+            z-index: -10;
+            box-shadow: 0px 0px 15px 10px rgba(0,0,0,.6);
+>>>>>>> 9a7f959f94307ea0348993457a94d0fe22c3d656:andrOS/app/assets/stylesheets/welcome.scss
         }
     }
 

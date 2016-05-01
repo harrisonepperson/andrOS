@@ -1,32 +1,17 @@
-<!--div class="draggable" style="display:show;" id="paintFrame" data-app="paint">
-    <div class="window" id="paint">
+<div class="draggable" style="display:show;" id="drawFrame" data-app="draw">
+    <div class="window" id="draw">
         <div class="titleBar">
-            <span class="close" onclick="closeApp('paint')"></span>
-            <span class="max" onclick="maxApp('paint', 0)"></span>
-            <span class="min" onclick="minApp('paint')"></span>
-            <span class="titleText">Paint</span>
+            <span class="close" onclick="closeApp('draw')"></span>
+            <span class="max" onclick="snapApp('draw', 2)"></span>
+            <span class="rest none" onclick="snapApp('draw', 0)"></span>
+            <span class="min" onclick="minApp('draw')"></span>
+            <span class="titleText">Draw</span>
+
+            <span class="rightArrow" onclick="snapApp('draw', 1)"></span>
+            <span class="leftArrow" onclick="snapApp('draw', -1)"></span>
         </div>
         <div class="windowContent">
-            < %= render 'apps/paint' %>
-        </div>
-    </div>
-</div-->
-
-
-<div class="draggable" style="display:show;" id="paintFrame" data-app="paint">
-    <div class="window" id="paint">
-        <div class="titleBar">
-            <span class="close" onclick="closeApp('paint')"></span>
-            <span class="max" onclick="snapApp('paint', 2)"></span>
-            <span class="rest none" onclick="snapApp('paint', 0)"></span>
-            <span class="min" onclick="minApp('paint')"></span>
-            <span class="titleText">Paint</span>
-
-            <span class="rightArrow" onclick="snapApp('paint', 1)"></span>
-            <span class="leftArrow" onclick="snapApp('paint', -1)"></span>
-        </div>
-        <div class="windowContent">
-            <%= render 'apps/paint' %>
+            <%= render 'apps/draw' %>
         </div>
     </div>
 </div>

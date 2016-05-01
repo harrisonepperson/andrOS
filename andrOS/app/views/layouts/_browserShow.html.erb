@@ -1,0 +1,31 @@
+<!--div class="draggable" style="display:show;" id="browserFrame">
+    <div class="window" id="browser">
+        <div class="titleBar">
+            <span class="close" onclick="closeApp('browser')"></span>
+            <span class="max" onclick="maxApp('browser', 0)" ></span>
+            <span class="min" onclick="minApp('browser', 0)"></span>
+            <input type="text" id="www" value="http://www."><button id="searchURL" id="urlGo">GO!</button>
+        </div>
+        < %= render 'apps/browser' %>
+    </div>
+</div-->
+
+
+
+<div class="draggable" style="display:show;" id="browserFrame" data-app="browser">
+    <div class="window" id="browser">
+        <div class="titleBar">
+            <span class="close" onclick="closeApp('browser')"></span>
+            <span class="max" onclick="snapApp('browser', 2)"></span>
+            <span class="rest none" onclick="snapApp('browser', 0)"></span>
+            <span class="min" onclick="minApp('browser')"></span>
+            <input type="text" id="www" value="http://www."><button id="searchURL" id="urlGo">GO!</button>
+
+            <span class="rightArrow" onclick="snapApp('browser', 1)"></span>
+            <span class="leftArrow" onclick="snapApp('browser', -1)"></span>
+        </div>
+        <div class="windowContent">
+            <%= render 'apps/browser' %>
+        </div>
+    </div>
+</div>
