@@ -74,6 +74,79 @@ $(document).ready(function(){
     //Runs clock function when the DOM loads  
     $(startTime);
     
+    //TERMINAL
+    var ContentofDiv = $('#txtDiv').html();
+    var cmdText= "";
+    var text = $('#txtDiv').text();
+    var connection= "Networking connection:" + " " +navigator.onLine;
+    var engine= "Engine Name of the browser:" + " " +navigator.product;
+    var cookies="Cookies enabled:" + " " +navigator.cookieEnabled;
+    var lang="Broweser language:" + " " +navigator.language;
+    var browserV="Broweser version information:" + " " +navigator.appVersion;
+    
+    $("#cmdIn").keypress(function(e) {
+        
+        if(e.which == 13) {
+            //style="min-height:600px; width:600px;"
+            //style="min-height:520px; width:600px;"
+            if($("#cmdIn").val() == "ip config" || $("#cmdIn").val()==1){              
+               
+               cmdText = $("#cmdResult").text();    
+               $("#cmdResult").text("");           
+               $("#cmdResult").text(cmdText+"~$ "+ myip +"\n");
+               $("#cmdIn").val("");;
+            }
+            else if($("#cmdIn").val() == "cnx" ||$("#cmdIn").val() == "2"){
+               cmdText = $("#cmdResult").text();    
+               $("#cmdResult").text("");           
+               $("#cmdResult").text(cmdText+"~$ "+connection+"\n");
+               $("#cmdIn").val("");
+            }
+            else if($("#cmdIn").val() == "3"){
+               cmdText = $("#cmdResult").text();    
+               $("#cmdResult").text("");           
+               $("#cmdResult").text(cmdText+"~$ "+engine+"\n");
+               $("#cmdIn").val("");
+            }
+            else if($("#cmdIn").val() == "4"){
+               cmdText = $("#cmdResult").text();    
+               $("#cmdResult").text("");           
+               $("#cmdResult").text(cmdText+"~$ "+cookies+"\n");
+               $("#cmdIn").val("");
+            }
+            else if($("#cmdIn").val() == "5"){
+               cmdText = $("#cmdResult").text();    
+               $("#cmdResult").text("");           
+               $("#cmdResult").text(cmdText+"~$ "+lang+"\n");
+               $("#cmdIn").val("");
+            }
+            else if($("#cmdIn").val() == "browser -v" ||$("#cmdIn").val() == "6"){
+               cmdText = $("#cmdResult").text();    
+               $("#cmdResult").text("");           
+               $("#cmdResult").text(cmdText+"~$ "+browserV+"\n");
+               $("#cmdIn").val("");
+            }
+            else if($("#cmdIn").val() == "7"){
+               cmdText = $("#cmdResult").text();    
+               $("#cmdResult").text("");           
+               $("#cmdResult").text(cmdText+"~$ "+"App list \n");
+               $("#cmdIn").val("");
+            }
+            else if($("#cmdIn").val() == "clear"){
+                $("#cmdResult").text("");
+                $("#cmdIn").val("");
+                cmdText= "";
+            }
+            else{
+                cmdText = $("#cmdResult").text();   
+               $("#cmdResult").text("");           
+               $("#cmdResult").text("command not found \n");
+               $("#cmdIn").val("");
+            }
+           
+        }
+    });
+    
     
         
 });
