@@ -27,7 +27,7 @@ $(document).ready(function(){
             $("#apps").toggle("fast", "linear");
             $("#filter").autofocus="true";
     });
-    $(".toggleExample").click(function(){
+    /*$(".toggleExample").click(function(){
             $("#exampleFrame").toggle("fast", "linear");
             launchApp('example');
     });
@@ -60,6 +60,20 @@ $(document).ready(function(){
 		$("#presFrame").toggle("fast", "linear");
 		launchApp('pres');
 	});
+	$(".toggleWelcome").click(function(){
+		$("#welcomeFrame").toggle("fast", "linear");
+		launchApp('welcome');
+	});*/
+	
+	$(".toggleWindow").click(function(e){
+		e.preventDefault();
+		
+		var app = $(this).data('app');
+		var icon = $(this).data('icon');
+		$("#" + app + "Frame").toggle("fast", "linear");
+		launchApp(app, icon);
+	});
+
     //Search Apps
     (function ($) {
         $('#filter').keyup(function () {
@@ -242,8 +256,8 @@ $(document).ready(function(){
 
 function removeActive(item, index)
 {
-    $(item).removeClass("active");
-    $(item).addClass("sink");
+    $("#" + item).removeClass("active");
+    $("#" + item).addClass("sink");
 
     console.log(index + ", " + item);
 }
@@ -276,7 +290,13 @@ function www()
     document.getElementById("browserContent").src = x;
 }
 
-function launchApp(app)
+function dockToggle(app)
+{
+	console.log("#" + app + "Frame");
+	$("#" + app + "Frame").toggle("fast", "linear");
+}
+
+function launchApp(app, icon)
 {
     //var testString = app.toString();
     //document.getElementById(app).style.display = "show";
@@ -293,8 +313,10 @@ function launchApp(app)
 	    //Adds the element to the dock with a default pic
 	    var parent = document.getElementById("dockCenter");
 	    var child = document.createElement("span");
-	    child.className = "glyphicon glyphicon-ok toggle" + app;
+	    child.className = "glyphicon glyphicon-" + icon;
+	    child.setAttribute("data-app", app);
 	    child.setAttribute("id", "dock" + app);
+	    child.setAttribute("onclick", "dockToggle('" + app + "')");
 	//var node = document.createTextNode("x");
 	//child.appendChild(node);
 	    

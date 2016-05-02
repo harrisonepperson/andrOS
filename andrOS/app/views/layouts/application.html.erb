@@ -7,17 +7,17 @@
     </head>
     <body> 
 	<%= render 'layouts/navbar' %>
-	<%= render 'layouts/notNav' %>
 	<% if current_user %>
-		<%= render 'layouts/cmdShow' %> 
-		<%= render 'layouts/paintShow' %>
-		<!--%= render 'layouts/textFileShow' %> 
-		< %= render 'layouts/notesShow' %-->  
-		<%= render 'layouts/browserShow' %> 
-		<%= render 'layouts/calcShow' %> 
-		<%= render 'layouts/loginModal'%>  
-		<%= render 'layouts/dockShow'%>
-	    	<%= render 'layouts/presShow'%>
+		<%= render 'layouts/notNav' %>
+		<!--%= render 'layouts/cmdShow' %> 
+		< %= render 'layouts/paintShow' %>
+		< %= render 'layouts/textFileShow' %> 
+		< %= render 'layouts/notesShow' %>  
+		< %= render 'layouts/browserShow' %> 
+		< %= render 'layouts/calcShow' %> 
+		< %= render 'layouts/loginModal'%>  
+		< %= render 'layouts/dockShow'%>
+	    	< %= render 'layouts/presShow'%-->
 	<% end %>
 	<%= yield %>
     </body>
