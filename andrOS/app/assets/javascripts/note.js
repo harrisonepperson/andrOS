@@ -215,6 +215,6 @@ window.onload = function() {
   if (window.requestFileSystem) {
     initFileSystem();
   } else {
-    alert('Sorry! Your browser doesn\'t support the FileSystem API :(');
+    //alert('Sorry! Your browser doesn\'t support the FileSystem API :(');
   }
 };

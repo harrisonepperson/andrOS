@@ -8,7 +8,8 @@ $(function() {
         snap: true,
         snapMode: "outer",
         stack: "#example",
-        containment: "body"
+        containment: "body"//,
+	//zIndex: 50
     });
 
 });
@@ -92,8 +93,8 @@ $(document).ready(function(){
         appList.forEach(removeActive);
 
         var window = $(this).data('app');
-        $("#" + window).removeClass("sink");
-        $("#" + window).addClass("active");
+        $("#" + window + "Frame").removeClass("sink");
+        $("#" + window + "Frame").addClass("active");
 
     });
 
@@ -256,8 +257,8 @@ $(document).ready(function(){
 
 function removeActive(item, index)
 {
-    $("#" + item).removeClass("active");
-    $("#" + item).addClass("sink");
+    $("#" + item + "Frame").removeClass("active");
+    $("#" + item + "Frame").addClass("sink");
 
     console.log(index + ", " + item);
 }
