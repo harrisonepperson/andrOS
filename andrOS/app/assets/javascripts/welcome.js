@@ -305,6 +305,7 @@ function launchApp(app, icon)
 
 
     var found = $.inArray(app, appList);
+    appList.forEach(removeActive);
     if (found >= 0) {
         //appList.splice(app, 1);
     } else {
@@ -321,7 +322,7 @@ function launchApp(app, icon)
 	//var node = document.createTextNode("x");
 	//child.appendChild(node);
 	    
-	    parent.appendChild(child);
+    parent.appendChild(child);
 	    
 	    //Right now the default "check" is used as the app icon, we'll have to scoure the pic info from the html data element to actually have that work.
 	    
@@ -330,12 +331,14 @@ function launchApp(app, icon)
     console.log(appList[0]);
     console.log("Length " + appList.length)
     
-	var para = document.createElement("p");
+    $("#" + app + "Frame").addClass("active");
+    
+	/*var para = document.createElement("p");
 	var node = document.createTextNode("This is new.");
 	para.appendChild(node);
 
 	var element = document.getElementById("div1");
-	element.appendChild(para);
+	element.appendChild(para);*/
 }
 /*function makeActive(app)
 {    

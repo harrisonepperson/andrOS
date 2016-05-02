@@ -18,12 +18,12 @@
             <span class="max" onclick="snapApp('textFile', 2)"></span>
             <span class="rest none" onclick="snapApp('textFile', 0)"></span>
             <span class="min" onclick="minApp('textFile')"></span>
-            <input value="TextFile App - Google Drive">
+            <span class="titleText">Google Files</span>
 
             <span class="rightArrow" onclick="snapApp('textFile', 1)"></span>
             <span class="leftArrow" onclick="snapApp('textFile', -1)"></span>
         </div>
-        <div class="windowContent">
+        <div class="windowContent sizeLock noMarg noPad">
             <%= render 'apps/textFile' %>
         </div>
     </div>
